@@ -1,0 +1,50 @@
+{
+  "name": "markflow",
+  "version": "1.0.0",
+  "description": "Minimalist Markdown Reader with Mermaid & PDF Export",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "esbuild renderer.src.js --bundle --outfile=renderer.js --platform=browser --format=esm",
+    "dist": "npm run build && electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.erichosang.markflow",
+    "productName": "MarkFlow",
+    "win": {
+      "target": "portable"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "style.css",
+      "help.html"
+    ]
+  },
+  "keywords": [],
+  "author": "erichosang",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "esbuild": "^0.28.0"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.10.3",
+    "@codemirror/lang-markdown": "^6.5.0",
+    "@codemirror/language": "^6.12.3",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "@codemirror/view": "^6.41.0",
+    "codemirror": "^6.0.2",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.1",
+    "mermaid": "^11.14.0"
+  }
+}

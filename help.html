@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkFlow - Help & Guide</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #ffffff;
+            color: #1f2328;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        h1 { font-size: 20px; font-weight: 600; border-bottom: 1px solid #d0d7de; padding-bottom: 8px; margin-bottom: 16px; }
+        h2 { font-size: 16px; font-weight: 600; margin-top: 24px; }
+        code { background-color: #f6f8fa; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
+        pre { background-color: #f6f8fa; padding: 12px; border-radius: 6px; overflow: auto; }
+        .footer { margin-top: 40px; font-size: 12px; color: #656d76; text-align: center; border-top: 1px solid #d0d7de; padding-top: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Getting Started with MarkFlow</h1>
+    
+    <p>MarkFlow is a minimalist Markdown editor designed for speed and elegance.</p>
+    
+    <h2>Keyboard Shortcuts</h2>
+    <ul>
+        <li><code>Ctrl + O</code>: Open Markdown file</li>
+        <li><code>Ctrl + S</code>: Save changes</li>
+        <li><code>Ctrl + P</code>: Export to PDF</li>
+    </ul>
+
+    <h2>Mermaid Diagrams</h2>
+    <p>Render flowcharts and graphs by using the <code>mermaid</code> language identifier in code blocks:</p>
+    <pre><code>```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```</code></pre>
+
+    <h2>Syncing Preview</h2>
+    <p>The preview on the right updates automatically as you type in the editor.</p>
+
+    <div class="footer">
+        MarkFlow v1.0.0<br>
+        Developed by <strong>@erichosang</strong>
+    </div>
+</body>
+</html>
