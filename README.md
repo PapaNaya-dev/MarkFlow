@@ -3,7 +3,7 @@
 **MarkFlow** is a elegant, minimalist Markdown editor and reader for Windows that features real-time Mermaid diagram visualization and professional PDF export capabilities.
 
 
-![MarkFlow]([https://url-gambar.jpg](https://github.com/PapaNaya-dev/MarkFlow/blob/main/screenshot_MarkFlow.png))
+![MarkFlow](https://github.com/PapaNaya-dev/MarkFlow/blob/d91ee33843058ec9d4d875a08835788fc1e28cee/screenshot_MarkFlow.png)
 
 ## Features
 
