@@ -2,23 +2,74 @@ const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
+let mainWindow;
+
 function createWindow() {
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    icon: path.join(__dirname, 'MarkFlow.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
-    titleBarStyle: 'hiddenInset', // Modern title bar on macOS, but we'll handle Windows/Linux too
+    titleBarStyle: 'hiddenInset',
   });
 
-  win.loadFile('index.html');
+  mainWindow.loadFile('index.html');
   
-  // Open DevTools in development
-  // win.webContents.openDevTools();
+  // Handle file opening from command line
+  mainWindow.webContents.on('did-finish-load', () => {
+    const filePath = getFilePathFromArgs();
+    if (filePath) {
+      openFileByPath(filePath);
+    }
+  });
 }
+
+function getFilePathFromArgs() {
+  // On Windows/Linux, the file path is usually the last argument
+  const args = process.argv;
+  if (app.isPackaged) {
+    // In packaged app, args[0] is exe, args[1] could be file
+    if (args.length >= 2) {
+      const p = args[args.length - 1];
+      if (fs.existsSync(p) && fs.lstatSync(p).isFile() && p.match(/\.(md|markdown)$/i)) {
+        return p;
+      }
+    }
+  } else {
+    // In development (electron . path/to/file)
+    if (args.length >= 3) {
+      const p = args[args.length - 1];
+      if (fs.existsSync(p) && fs.lstatSync(p).isFile() && p.match(/\.(md|markdown)$/i)) {
+        return p;
+      }
+    }
+  }
+  return null;
+}
+
+function openFileByPath(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    mainWindow.webContents.send('file-opened', { path: filePath, content });
+  } catch (err) {
+    console.error('Failed to open file:', err);
+  }
+}
+
+// For macOS "Open With" while app is running
+app.on('open-file', (event, filePath) => {
+  event.preventDefault();
+  if (mainWindow) {
+    openFileByPath(filePath);
+  } else {
+    // If window not yet created, it will be handled by createWindow logic if we store it
+    global.fileToOpen = filePath;
+  }
+});
 
 app.whenReady().then(() => {
   createWindow();
@@ -82,9 +133,9 @@ ipcMain.handle('export-pdf', async (event, htmlContent) => {
 
 ipcMain.on('show-help', () => {
   const helpWin = new BrowserWindow({
-    width: 600,
-    height: 700,
-    title: 'MarkFlow Help',
+    width: 800,
+    height: 800,
+    title: 'MarkFlow - Markdown Tutorial',
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: false,

@@ -6,4 +6,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
   exportPDF: () => ipcRenderer.invoke('export-pdf'),
   showHelp: () => ipcRenderer.send('show-help'),
   openExternal: (url) => ipcRenderer.send('open-external', url),
+  onFileOpened: (callback) => ipcRenderer.on('file-opened', (event, value) => callback(value)),
 });

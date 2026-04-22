@@ -170,5 +170,17 @@ document.addEventListener('mouseup', () => {
     document.body.style.cursor = 'default';
 });
 
-// Start with empty editor
+// Listen for files opened via command line or macOS open-file event
+window.electronAPI.onFileOpened((file) => {
+    if (file) {
+        currentFilePath = file.path;
+        filePathDisplay.textContent = file.path;
+        
+        // Remove old editor and start new one
+        editorContainer.innerHTML = '';
+        startEditor(file.content);
+    }
+});
+
+// Start with empty editor or initial content
 startEditor("# Welcome to MarkFlow\n\nEdit your markdown here and see the preview on the right.\n\n## Example Mermaid\n\n```mermaid\ngraph TD;\n    A-->B;\n    A-->C;\n    B-->D;\n    C-->D;\n```");

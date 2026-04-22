@@ -13,7 +13,8 @@
     "appId": "com.erichosang.markflow",
     "productName": "MarkFlow",
     "win": {
-      "target": "portable"
+      "target": "portable",
+      "icon": "MarkFlow.png"
     },
     "directories": {
       "output": "dist"
@@ -24,7 +25,8 @@
       "renderer.js",
       "index.html",
       "style.css",
-      "help.html"
+      "help.html",
+      "MarkFlow.png"
     ]
   },
   "keywords": [],

@@ -3,50 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarkFlow - Help & Guide</title>
+    <title>MarkFlow - Markdown Tutorial</title>
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             color: #1f2328;
-            padding: 24px;
+            padding: 40px;
             line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        h1 { font-size: 20px; font-weight: 600; border-bottom: 1px solid #d0d7de; padding-bottom: 8px; margin-bottom: 16px; }
-        h2 { font-size: 16px; font-weight: 600; margin-top: 24px; }
-        code { background-color: #f6f8fa; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
-        pre { background-color: #f6f8fa; padding: 12px; border-radius: 6px; overflow: auto; }
-        .footer { margin-top: 40px; font-size: 12px; color: #656d76; text-align: center; border-top: 1px solid #d0d7de; padding-top: 16px; }
+        h1 { font-size: 28px; font-weight: 600; border-bottom: 2px solid #007bff; padding-bottom: 12px; margin-bottom: 30px; color: #007bff; }
+        h2 { font-size: 20px; font-weight: 600; margin-top: 40px; color: #333; display: flex; align-items: center; gap: 8px; }
+        h2::before { content: "•"; color: #007bff; font-weight: bold; }
+        p { margin-bottom: 16px; }
+        code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: #d63384; }
+        pre { background-color: #212529; color: #f8f9fa; padding: 16px; border-radius: 8px; overflow: auto; font-family: 'JetBrains Mono', monospace; position: relative; margin: 16px 0; }
+        pre::after { content: "Markdown Syntax"; position: absolute; top: 0; right: 0; background: #495057; color: #fff; padding: 2px 8px; font-size: 10px; border-bottom-left-radius: 6px; }
+        .example-box { background: #fff; border: 1px solid #dee2e6; padding: 20px; border-radius: 8px; margin-top: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .footer { margin-top: 60px; font-size: 14px; color: #6c757d; text-align: center; border-top: 1px solid #dee2e6; padding-top: 24px; }
+        .shortcut { display: inline-block; background: #e9ecef; border: 1px solid #ced4da; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 12px; }
+        .tip { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin: 16px 0; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <h1>Getting Started with MarkFlow</h1>
+    <h1>MarkFlow Tutorial</h1>
     
-    <p>MarkFlow is a minimalist Markdown editor designed for speed and elegance.</p>
+    <p>Selamat datang di MarkFlow! Panduan ini akan membantu Anda menguasai Markdown dalam waktu singkat.</p>
     
-    <h2>Keyboard Shortcuts</h2>
-    <ul>
-        <li><code>Ctrl + O</code>: Open Markdown file</li>
-        <li><code>Ctrl + S</code>: Save changes</li>
-        <li><code>Ctrl + P</code>: Export to PDF</li>
-    </ul>
+    <h2>1. Membuat Judul (Headers)</h2>
+    <p>Gunakan simbol <code>#</code> diikuti spasi di awal baris.</p>
+    <pre><code># Judul Besar (H1)
+## Judul Sedang (H2)
+### Judul Kecil (H3)</code></pre>
 
-    <h2>Mermaid Diagrams</h2>
-    <p>Render flowcharts and graphs by using the <code>mermaid</code> language identifier in code blocks:</p>
+    <h2>2. Format Teks (Emphasis)</h2>
+    <p>Gunakan bintang atau underscore untuk membuat teks lebih menonjol.</p>
+    <pre><code>**Teks Tebal** (Bold)
+*Teks Miring* (Italic)
+~~Teks Dicoret~~ (Strikethrough)</code></pre>
+
+    <h2>3. Kutipan (Blockquotes)</h2>
+    <p>Gunakan simbol <code>></code> untuk membuat kutipan atau catatan penting.</p>
+    <pre><code>> Ini adalah kutipan inspiratif atau catatan penting.</code></pre>
+
+    <h2>4. Daftar (Lists)</h2>
+    <p>Membuat daftar terurut atau tidak terurut sangat mudah.</p>
+    <pre><code>- Item pertama
+- Item kedua
+  - Sub-item
+
+1. Langkah satu
+2. Langkah dua</code></pre>
+
+    <h2>5. Flowchart & Diagram (Mermaid)</h2>
+    <p>Gunakan blok kode dengan identitas <code>mermaid</code> untuk membuat diagram alir otomatis.</p>
     <pre><code>```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+    A[Mulai] --> B{Pilihan};
+    B -- Ya --> C[Selesai];
+    B -- Tidak --> D[Ulangi];
+    D --> B;
 ```</code></pre>
+    <div class="tip">
+        <strong>Tip:</strong> Diagram akan langsung dirender secara visual di panel kanan MarkFlow!
+    </div>
 
-    <h2>Syncing Preview</h2>
-    <p>The preview on the right updates automatically as you type in the editor.</p>
+    <h2>6. Shortcut Keyboard</h2>
+    <ul>
+        <li><span class="shortcut">Ctrl + O</span> : Buka File</li>
+        <li><span class="shortcut">Ctrl + S</span> : Simpan File</li>
+        <li><span class="shortcut">Ctrl + P</span> : Export ke PDF</li>
+    </ul>
 
     <div class="footer">
         MarkFlow v1.0.0<br>
-        Developed by <strong>@erichosang</strong>
+        Dibuat dengan ❤️ oleh <strong>@erichosang</strong>
     </div>
 </body>
 </html>
